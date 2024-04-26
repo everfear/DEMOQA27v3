@@ -21,16 +21,16 @@ public class SoftAssertionsPageTest
     }
 
     @Test
-    void FindJUnit5CodeTest()
+    void findJUnit5CodeTest()
     {
 
         open("/selenide/selenide");
 
         $("#wiki-tab").click();
         $("#wiki-pages-filter").click();
-        $("#wiki-pages-filter").type("SoftAssertions").pressTab();
-        $(byText("SoftAssertions")).shouldBe(visible);
-        $(byText("SoftAssertions")).click();
+        $("#wiki-pages-filter").sendKeys("SoftAssertions");
+        $("#wiki-pages-box").$(byText("SoftAssertions")).shouldBe(visible);
+        $("#wiki-pages-box").$(byText("SoftAssertions")).click();
         $$("div.markdown-heading").findBy(text("JUnit5")).sibling(0).shouldHave(text("""
                 @ExtendWith({SoftAssertsExtension.class})
                  class Tests {
